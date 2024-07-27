@@ -1,17 +1,44 @@
-/* based on https://github.com/AUTOMATIC1111/stable-diffusion-webui/blob/v1.6.0/style.css */
+:root {
+  /* Define color variables for theming */
+  --color-primary: #3498db;
+  --color-secondary: #f3f3f3;
+  --color-white: #ffffff;
+  --color-dark: #333333;
+  --color-background: #f9f9f9;
+  --color-border: #ddd;
+  --color-highlight: #a55000;
+  
+  /* Define size variables for theming */
+  --border-radius: 8px;
+  --font-size-small: 14px;
+  --font-size-large: 35px;
+  --loader-size: 30px;
+  --progress-height: 20px;
+  --control-padding: 1em;
+  --tooltip-width: 250px;
+  --modal-transition: 0.2s;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #202020;
+    --color-border: #444444;
+    --color-dark: #ffffff;
+  }
+}
 
 .loader-container {
-  display: flex; /* Use flex to align items horizontally */
-  align-items: center; /* Center items vertically within the container */
-  white-space: nowrap; /* Prevent line breaks within the container */
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
 }
 
 .loader {
-  border: 8px solid #f3f3f3; /* Light grey */
-  border-top: 8px solid #3498db; /* Blue */
+  border: 8px solid var(--color-secondary);
+  border-top: 8px solid var(--color-primary);
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: var(--loader-size);
+  height: var(--loader-size);
   animation: spin 2s linear infinite;
 }
 
@@ -20,67 +47,59 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Style the progress bar */
 progress {
-  appearance: none; /* Remove default styling */
-  height: 20px; /* Set the height of the progress bar */
-  border-radius: 5px; /* Round the corners of the progress bar */
-  background-color: #f3f3f3; /* Light grey background */
+  appearance: none;
+  height: var(--progress-height);
+  border-radius: var(--border-radius);
+  background-color: var(--color-secondary);
   width: 100%;
   vertical-align: middle !important;
 }
 
-/* Style the progress bar container */
 .progress-container {
-  margin-left: 20px;
-  margin-right: 20px;
-  flex-grow: 1; /* Allow the progress container to take up remaining space */
+  margin: 0 20px;
+  flex-grow: 1;
 }
 
-/* Set the color of the progress bar fill */
-progress::-webkit-progress-value {
-  background-color: #3498db; /* Blue color for the fill */
-}
-
+progress::-webkit-progress-value,
 progress::-moz-progress-bar {
-  background-color: #3498db; /* Blue color for the fill in Firefox */
+  background-color: var(--color-primary);
 }
 
-/* Style the text on the progress bar */
 progress::after {
-  content: attr(value '%'); /* Display the progress value followed by '%' */
+  content: attr(value) '%';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white; /* Set text color */
-  font-size: 14px; /* Set font size */
+  color: var(--color-white);
+  font-size: var(--font-size-small);
 }
 
-/* Style other texts */
 .loader-container > span {
-  margin-left: 5px; /* Add spacing between the progress bar and the text */
+  margin-left: 5px;
 }
 
 .progress-bar > .generating {
   display: none !important;
 }
 
-.progress-bar{
-  height: 30px !important;
+.progress-bar {
+  height: var(--loader-size) !important;
 }
 
 .progress-bar span {
-    text-align: right;
-    width: 215px;
+  text-align: right;
+  width: 215px;
 }
+
 div:has(> #positive_prompt) {
-    border: none;
+  border: none;
 }
 
 #positive_prompt {
-    padding: 1px;
-    background: var(--background-fill-primary);
+  padding: 1px;
+  background: var(--color-background);
 }
 
 .type_row {
@@ -111,20 +130,18 @@ div:has(> #positive_prompt) {
   overflow: auto !important;
 }
 
-.performance_selection label {
-    width: 140px !important;
+.performance_selection label,
+.aspect_ratios label {
+  width: 140px !important;
 }
 
 .aspect_ratios label {
-    flex: calc(50% - 5px) !important;
+  flex: calc(50% - 5px) !important;
 }
 
-.aspect_ratios label span {
-    white-space: nowrap !important;
-}
-
+.aspect_ratios label span,
 .aspect_ratios label input {
-    margin-left: -5px !important;
+  white-space: nowrap !important;
 }
 
 .lora_enable label {
@@ -145,31 +162,31 @@ div:has(> #positive_prompt) {
   }
 }
 
-#context-menu{
-    z-index:9999;
-    position:absolute;
-    display:block;
-    padding:0px 0;
-    border:2px solid #a55000;
-    border-radius:8px;
-    box-shadow:1px 1px 2px #CE6400;
-    width: 200px;
+#context-menu {
+  z-index: 9999;
+  position: absolute;
+  display: block;
+  padding: 0;
+  border: 2px solid var(--color-highlight);
+  border-radius: var(--border-radius);
+  box-shadow: 1px 1px 2px var(--color-highlight);
+  width: 200px;
 }
 
-.context-menu-items{
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.context-menu-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.context-menu-items a{
-    display:block;
-    padding:5px;
-    cursor:pointer;
+.context-menu-items a {
+  display: block;
+  padding: 5px;
+  cursor: pointer;
 }
 
-.context-menu-items a:hover{
-    background: #a55000;
+.context-menu-items a:hover {
+  background: var(--color-highlight);
 }
 
 .canvas-tooltip-info {
@@ -185,7 +202,6 @@ div:has(> #positive_prompt) {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
   z-index: 100;
 }
 
@@ -194,7 +210,7 @@ div:has(> #positive_prompt) {
   display: block;
   width: 2px;
   height: 7px;
-  background-color: white;
+  background-color: var(--color-white);
   margin-top: 2px;
 }
 
@@ -203,24 +219,23 @@ div:has(> #positive_prompt) {
   display: block;
   width: 2px;
   height: 2px;
-  background-color: white;
+  background-color: var(--color-white);
 }
 
 .canvas-tooltip-content {
   display: none;
-  background-color: #f9f9f9;
-  color: #333;
-  border: 1px solid #ddd;
+  background-color: var(--color-background);
+  color: var(--color-dark);
+  border: 1px solid var(--color-border);
   padding: 15px;
   position: absolute;
   top: 40px;
   left: 10px;
-  width: 250px;
+  width: var(--tooltip-width);
   font-size: 16px;
   opacity: 0;
-  border-radius: 8px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-
+  border-radius: var(--border-radius);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 100;
 }
 
@@ -236,83 +251,83 @@ div:has(> #positive_prompt) {
 }
 
 .styler {
-  overflow:inherit !important;
+  overflow: inherit !important;
 }
 
-.gradio-container{
+.gradio-container {
   overflow: visible;
 }
 
-/* fullpage image viewer */
-
-#lightboxModal{
-    display: none;
-    position: fixed;
-    z-index: 1001;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(20, 20, 20, 0.95);
-    user-select: none;
-    -webkit-user-select: none;
-    flex-direction: column;
+#lightboxModal {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(20, 20, 20, 0.95);
+  user-select: none;
+  -webkit-user-select: none;
+  flex-direction: column;
 }
 
 .modalControls {
-    display: flex;
-    position: absolute;
-    right: 0px;
-    left: 0px;
-    gap: 1em;
-    padding: 1em;
-    background-color:rgba(0,0,0,0);
-    z-index: 1;
-    transition: 0.2s ease background-color;
-}
-.modalControls:hover {
-    background-color:rgba(0,0,0,0.9);
-}
-.modalClose {
-    margin-left: auto;
-}
-.modalControls span{
-    color: white;
-    text-shadow: 0px 0px 0.25em black;
-    font-size: 35px;
-    font-weight: bold;
-    cursor: pointer;
-    width: 1em;
+  display: flex;
+  position: absolute;
+  right: 0;
+  left: 0;
+  gap: var(--control-padding);
+  padding: var(--control-padding);
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 1;
+  transition: var(--modal-transition) ease background-color;
 }
 
-.modalControls span:hover, .modalControls span:focus{
-    color: #999;
-    text-decoration: none;
+.modalControls:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modalClose {
+  margin-left: auto;
+}
+
+.modalControls span {
+  color: var(--color-white);
+  text-shadow: 0px 0px 0.25em black;
+  font-size: var(--font-size-large);
+  font-weight: bold;
+  cursor: pointer;
+  width: 1em;
+}
+
+.modalControls span:hover, .modalControls span:focus {
+  color: #999;
+  text-decoration: none;
 }
 
 #lightboxModal > img {
-    display: block;
-    margin: auto;
-    width: auto;
+  display: block;
+  margin: auto;
+  width: auto;
 }
 
-#lightboxModal > img.modalImageFullscreen{
-    object-fit: contain;
-    height: 100%;
-    width: 100%;
-    min-height: 0;
+#lightboxModal > img.modalImageFullscreen {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+  min-height: 0;
 }
 
-.modalPrev,
-.modalNext {
+.modalPrev, .modalNext {
   cursor: pointer;
   position: absolute;
   top: 50%;
   width: auto;
   padding: 16px;
   margin-top: -50px;
-  color: white;
+  color: var(--color-white);
   font-weight: bold;
   font-size: 20px;
   transition: 0.6s ease;
@@ -326,45 +341,43 @@ div:has(> #positive_prompt) {
   border-radius: 3px 0 0 3px;
 }
 
-.modalPrev:hover,
-.modalNext:hover {
+.modalPrev:hover, .modalNext:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
 #imageARPreview {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    border: 2px solid red;
-    background: rgba(255, 0, 0, 0.3);
-    z-index: 900;
-    pointer-events: none;
-    display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 2px solid red;
+  background: rgba(255, 0, 0, 0.3);
+  z-index: 900;
+  pointer-events: none;
+  display: none;
 }
 
 #stylePreviewOverlay {
-    opacity: 0;
-    pointer-events: none;
-    width: 128px;
-    height: 128px;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    border: solid 1px lightgrey;
-    transform: translate(-140px, 20px);
-    background-size: cover;
-    background-position: center;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-    z-index: 100;
-    transition: transform 0.1s ease, opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  width: 128px;
+  height: 128px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: solid 1px lightgrey;
+  transform: translate(-140px, 20px);
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  z-index: 100;
+  transition: transform 0.1s ease, opacity 0.3s ease;
 }
 
 #stylePreviewOverlay.lower-half {
-    transform: translate(-140px, -140px);
+  transform: translate(-140px, -140px);
 }
 
-/* scrollable box for style selections */
 .contain .tabs {
   height: 100%;
 }
@@ -383,36 +396,33 @@ div:has(> #positive_prompt) {
 }
 
 .contain .tabs .tabitem.style_selections_tab .style_selections .wrap[data-testid="checkbox-group"] {
-  position: absolute; /* remove this to disable scrolling within the checkbox-group */
+  position: absolute;
   overflow: auto;
   padding-right: 2px;
   max-height: 100%;
 }
 
 .contain .tabs .tabitem.style_selections_tab .style_selections .wrap[data-testid="checkbox-group"] label {
-  /* max-width: calc(35% - 15px) !important; */ /* add this to enable 3 columns layout */
   flex: calc(50% - 5px) !important;
 }
 
 .contain .tabs .tabitem.style_selections_tab .style_selections .wrap[data-testid="checkbox-group"] label span {
-  /* white-space:nowrap; */ /* add this to disable text wrapping (better choice for 3 columns layout) */
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* styles preview tooltip */
 .preview-tooltip {
-  background-color: #fff8;
+  background-color: var(--color-background);
   font-family: monospace;
   text-align: center;
-  border-radius: 5px 5px 0px 0px;
-  display: none; /* remove this to enable tooltip in preview image */
+  border-radius: 5px 5px 0 0;
+  display: none;
 }
 
 #inpaint_canvas .canvas-tooltip-info {
   top: 2px;
 }
 
-#inpaint_brush_color input[type=color]{
+#inpaint_brush_color input[type=color] {
   background: none;
 }
