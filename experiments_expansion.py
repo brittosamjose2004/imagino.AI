@@ -1,6 +1,6 @@
-from modules.expansion import FooocusExpansion
+from modules.expansion import imagino.AIExpansion
 
-expansion = FooocusExpansion()
+expansion = imagino.AIExpansion()
 
 text = 'a handsome man'
 
