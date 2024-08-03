@@ -1,4 +1,4 @@
-# https://github.com/sail-sg/EditAnything/blob/main/sam2groundingdino_edit.py
+
 
 import numpy as np
 from PIL import Image

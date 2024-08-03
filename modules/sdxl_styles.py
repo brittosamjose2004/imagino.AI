@@ -25,7 +25,7 @@ def normalize_key(k):
 styles = {}
 styles_files = get_files_from_folder(styles_path, ['.json'])
 
-for x in ['sdxl_styles_imagino.AI.json',
+for x in ['sdxl_styles_fooocus.json',
           'sdxl_styles_sai.json',
           'sdxl_styles_mre.json',
           'sdxl_styles_twri.json',
@@ -48,9 +48,9 @@ for styles_file in styles_files:
         print(f'Failed to load style file {styles_file}')
 
 style_keys = list(styles.keys())
-imagino.AI_expansion = 'imagino.AI V2'
+fooocus_expansion = 'fooocus V2'
 random_style_name = 'Random Style'
-legal_style_names = [imagino.AI_expansion, random_style_name] + style_keys
+legal_style_names = [fooocus_expansion, random_style_name] + style_keys
 
 
 def get_random_style(rng: Random) -> str:

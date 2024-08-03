@@ -37,9 +37,9 @@
     "default_prompt": "",
     "default_prompt_negative": "unrealistic, saturated, high contrast, big nose, painting, drawing, sketch, cartoon, anime, manga, render, CG, 3d, watermark, signature, label",
     "default_styles": [
-        "imagino.AI V2",
-        "imagino.AI Photograph",
-        "imagino.AI Negative"
+        "fooocus V2",
+        "fooocus Photograph",
+        "fooocus Negative"
     ],
     "default_aspect_ratio": "896*1152",
     "default_overwrite_step": -1,

@@ -20,7 +20,7 @@ enhancement_uov_prompt_types = [enhancement_uov_prompt_type_original, enhancemen
 
 CIVITAI_NO_KARRAS = ["euler", "euler_ancestral", "heun", "dpm_fast", "dpm_adaptive", "ddim", "uni_pc"]
 
-# imagino.AI: a1111 (Civitai)
+# fooocus: a1111 (Civitai)
 KSAMPLER = {
     "euler": "Euler",
     "euler_ancestral": "Euler a",
@@ -104,12 +104,12 @@ sdxl_aspect_ratios = [
 
 
 class MetadataScheme(Enum):
-    imagino.AI = 'imagino.AI'
+    fooocus = 'fooocus'
     A1111 = 'a1111'
 
 
 metadata_scheme = [
-    (f'{MetadataScheme.imagino.AI.value} (json)', MetadataScheme.imagino.AI.value),
+    (f'{MetadataScheme.fooocus.value} (json)', MetadataScheme.fooocus.value),
     (f'{MetadataScheme.A1111.value} (plain text)', MetadataScheme.A1111.value),
 ]
 

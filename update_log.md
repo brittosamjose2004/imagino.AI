@@ -1,4 +1,4 @@
-# [2.5.1](https://github.com/lllyasviel/imagino.AI/releases/tag/v2.5.1)
+# [2.5.1](https://github.com/lllyasviel/fooocus/releases/tag/v2.5.1)
 
 * Update download URL in readme
 * Increase speed of metadata loading
@@ -8,21 +8,21 @@
 * Add checkbox, config and handling for saving only the final enhanced image. Use config `default_save_only_final_enhanced_image`, default False.
 * Add sorting of final images when enhanced is enabled. Use argument `--disable-enhance-output-sorting` to disable.
 
-# [2.5.0](https://github.com/lllyasviel/imagino.AI/releases/tag/v2.5.0)
+# [2.5.0](https://github.com/lllyasviel/fooocus/releases/tag/v2.5.0)
 
 This version includes various package updates. If the auto-update doesn't work you can do one of the following:
-1. Open a terminal in the imagino.AI folder (location of config.txt) and run `git pull`
+1. Open a terminal in the fooocus folder (location of config.txt) and run `git pull`
 2. Update packages
-   - Windows (installation through zip file): open a terminal in the imagino.AI folder (location of config.txt) `..\python_embeded\python.exe -m pip install -r .\requirements_versions.txt` (Windows using embedded python, installation method zip file) or download imagino.AI again (zip file attached to this release)
+   - Windows (installation through zip file): open a terminal in the fooocus folder (location of config.txt) `..\python_embeded\python.exe -m pip install -r .\requirements_versions.txt` (Windows using embedded python, installation method zip file) or download fooocus again (zip file attached to this release)
    - other: manually update the packages using `python.exe -m pip install -r requirements_versions.txt` or use the docker image
 
 ---
 
 * Update python dependencies, add segment_anything
-* Add enhance feature, which offers easy image refinement steps (similar to adetailer, but based on dynamic image detection instead of specific mask detection models). See [documentation](https://github.com/lllyasviel/imagino.AI/discussions/3281).
+* Add enhance feature, which offers easy image refinement steps (similar to adetailer, but based on dynamic image detection instead of specific mask detection models). See [documentation](https://github.com/lllyasviel/fooocus/discussions/3281).
 * Rewrite async worker code, make code much more reusable to allow iterations and improve reusability
 * Improve GroundingDINO and SAM image masking
-* Fix inference tensor version counter tracking issue for GroundingDINO after using Enhance (see [discussion](https://github.com/lllyasviel/imagino.AI/discussions/3213))
+* Fix inference tensor version counter tracking issue for GroundingDINO after using Enhance (see [discussion](https://github.com/lllyasviel/fooocus/discussions/3213))
 * Move checkboxes Enable Mask Upload and Invert Mask When Generating from Developer Debug Mode to Inpaint Or Outpaint
 * Add persistent model cache for metadata. Use `--rebuild-hash-cache X` (X = int, number of CPU cores, default all) to manually rebuild the cache for all non-cached hashes
 * Rename `--enable-describe-uov-image` to `--enable-auto-describe-image`, now also works for enhance image upload
@@ -35,17 +35,17 @@ This version includes various package updates. If the auto-update doesn't work y
   * DreamShaperXL_Turbo_dpmppSdeKarras => DreamShaperXL_Turbo_v2_1
   * SDXL_FILM_PHOTOGRAPHY_STYLE_BetaV0.4 => SDXL_FILM_PHOTOGRAPHY_STYLE_V1
 * Add preset for pony_v6 (using ponyDiffusionV6XL)
-* Add style `imagino.AI Pony`
+* Add style `fooocus Pony`
 * Add restart sampler ([paper](https://arxiv.org/abs/2306.14878))
 * Add config option for default_inpaint_engine_version, sets inpaint engine for pony_v6 and playground_v2.5 to None for improved results (incompatible with inpaint engine)
 * Add image editor functionality to mask upload (same as for inpaint, now correctly resizes and allows more detailed mask creation)
 
-# [2.4.3](https://github.com/lllyasviel/imagino.AI/releases/tag/v2.4.3)
+# [2.4.3](https://github.com/lllyasviel/fooocus/releases/tag/v2.4.3)
 
 * Fix alphas_cumprod setter for TCD sampler
 * Add parser for env var strings to expected config value types to allow override of all non-path config keys 
 
-# [2.4.2](https://github.com/lllyasviel/imagino.AI/releases/tag/v2.4.2)
+# [2.4.2](https://github.com/lllyasviel/fooocus/releases/tag/v2.4.2)
 
 * Fix some small bugs (tcd scheduler when gamma is 0, chown in Dockerfile, update cmd args in readme, translation for aspect ratios, vae default after file reload)
 * Fix performance LoRA replacement when data is loaded from history log and inline prompt
@@ -53,19 +53,19 @@ This version includes various package updates. If the auto-update doesn't work y
 * Make textboxes (incl. positive prompt) resizable
 * Hide intermediate images when performance of Gradio would bottleneck the generation process (Extreme Speed, Lightning, Hyper-SD)
 
-# [2.4.1](https://github.com/lllyasviel/imagino.AI/releases/tag/v2.4.1)
+# [2.4.1](https://github.com/lllyasviel/fooocus/releases/tag/v2.4.1)
 
 * Fix some small bugs (e.g. adjust clip skip default value from 1 to 2, add type check to aspect ratios js update function)
-* Add automated docker build on push to main, tagged with `edge`. See [available docker images](https://github.com/lllyasviel/imagino.AI/pkgs/container/imagino.AI).
+* Add automated docker build on push to main, tagged with `edge`. See [available docker images](https://github.com/lllyasviel/fooocus/pkgs/container/fooocus).
 
-# [2.4.0](https://github.com/lllyasviel/imagino.AI/releases/tag/v2.4.0)
+# [2.4.0](https://github.com/lllyasviel/fooocus/releases/tag/v2.4.0)
 
 * Change settings tab elements to be more compact
 * Add clip skip slider
 * Add select for custom VAE
 * Add new style "Random Style"
 * Update default anime model to animaPencilXL_v310
-* Add button to reconnect the UI after imagino.AI crashed without having to configure everything again (no page reload required)
+* Add button to reconnect the UI after fooocus crashed without having to configure everything again (no page reload required)
 * Add performance "hyper-sd" (based on [Hyper-SDXL 4 step LoRA](https://huggingface.co/ByteDance/Hyper-SD/blob/main/Hyper-SDXL-4steps-lora.safetensors))
 * Add [AlignYourSteps](https://research.nvidia.com/labs/toronto-ai/AlignYourSteps/) scheduler by Nvidia, see 
 * Add [TCD](https://github.com/jabir-zheng/TCD) sampler and scheduler (based on sgm_uniform)
@@ -78,14 +78,14 @@ This version includes various package updates. If the auto-update doesn't work y
 * Add full raw prompts to history logs
 * Change code ownership from @lllyasviel to @mashb1t for automated issue / MR notification
 
-# [2.3.1](https://github.com/lllyasviel/imagino.AI/releases/tag/2.3.1)
+# [2.3.1](https://github.com/lllyasviel/fooocus/releases/tag/2.3.1)
 
 * Remove positive prompt from anime prefix to not reset prompt after switching presets
 * Fix image number being reset to 1 when switching preset, now doesn't reset anymore
 * Fix outpainting dimension calculation when extending left/right
 * Fix LoRA compatibility for LoRAs in a1111 metadata scheme
 
-# [2.3.0](https://github.com/lllyasviel/imagino.AI/releases/tag/2.3.0)
+# [2.3.0](https://github.com/lllyasviel/fooocus/releases/tag/2.3.0)
 
 * Add performance "lightning" (based on [SDXL-Lightning 4 step LoRA](https://huggingface.co/ByteDance/SDXL-Lightning/blob/main/sdxl_lightning_4step_lora.safetensors))
 * Add preset selection to UI, disable with argument `--disable-preset-selection`. Use `--always-download-new-model` to download missing models on preset switch.
@@ -94,15 +94,15 @@ This version includes various package updates. If the auto-update doesn't work y
 * Add support for wildcard subdirectories
 * Add scrollable 2 column layout for styles for better structure
 * Improve Colab resource needs for T4 instances (default), positively tested with all image prompt features
-* Improve anime preset, now uses style `imagino.AI Semi Realistic` instead of `imagino.AI Negative` (less wet look images)
+* Improve anime preset, now uses style `fooocus Semi Realistic` instead of `fooocus Negative` (less wet look images)
 
-# [2.2.1](https://github.com/lllyasviel/imagino.AI/releases/tag/2.2.1)
+# [2.2.1](https://github.com/lllyasviel/fooocus/releases/tag/2.2.1)
 
 * Fix some small bugs (e.g. image grid, upscale fast 2x, LoRA weight width in Firefox)
 * Allow prompt weights in array syntax
 * Add steps override and metadata scheme to history log
 
-# [2.2.0](https://github.com/lllyasviel/imagino.AI/releases/tag/2.2.0)
+# [2.2.0](https://github.com/lllyasviel/fooocus/releases/tag/2.2.0)
 
 * Isolate every image generation to truly allow multi-user usage
 * Add array support, changes the main prompt when increasing the image number. Syntax: `[[red, green, blue]] flower` 
@@ -110,7 +110,7 @@ This version includes various package updates. If the auto-update doesn't work y
 * Now supports native PNG, JPG and WEBP image generation
 * Add Docker support
 
-# [2.1.865](https://github.com/lllyasviel/imagino.AI/releases/tag/2.1.865)
+# [2.1.865](https://github.com/lllyasviel/fooocus/releases/tag/2.1.865)
 
 * Various bugfixes
 * Add authentication to --listen
@@ -121,7 +121,7 @@ This version includes various package updates. If the auto-update doesn't work y
 
 # 2.1.861 (requested update)
 
-(2023 Dec 21) Hi all, the feature updating of imagino.AI will be paused for about two or three weeks because we have some other workloads. See you soon and we will come back in mid or late Jan. However, you may still see updates if other collaborators are fixing bugs or solving problems.
+(2023 Dec 21) Hi all, the feature updating of fooocus will be paused for about two or three weeks because we have some other workloads. See you soon and we will come back in mid or late Jan. However, you may still see updates if other collaborators are fixing bugs or solving problems.
 
 * Show image preview in Style when mouse hover.
 
@@ -144,7 +144,7 @@ This version includes various package updates. If the auto-update doesn't work y
 
 # 2.1.852
 
-* New Log System: Log system now uses tables. If this is breaking some other browser extension or javascript developments, see also [use previous version](https://github.com/lllyasviel/imagino.AI/discussions/1405).
+* New Log System: Log system now uses tables. If this is breaking some other browser extension or javascript developments, see also [use previous version](https://github.com/lllyasviel/fooocus/discussions/1405).
 
 # 2.1.846
 
@@ -167,7 +167,7 @@ This version includes various package updates. If the auto-update doesn't work y
 * Maintained some computation codes in backend for efficiency.
 * Added a note about Seed Breaking Change.
 
-**Seed Breaking Change**: Note that 2.1.825-2.1.839 is seed breaking change. The computation float point is changed and some seeds may give slightly different results. The minor change in 2.1.825-2.1.839 do not influence image quality. See also [use previous version](https://github.com/lllyasviel/imagino.AI/discussions/1405).
+**Seed Breaking Change**: Note that 2.1.825-2.1.839 is seed breaking change. The computation float point is changed and some seeds may give slightly different results. The minor change in 2.1.825-2.1.839 do not influence image quality. See also [use previous version](https://github.com/lllyasviel/fooocus/discussions/1405).
 
 # 2.1.837
 
@@ -205,7 +205,7 @@ This version includes various package updates. If the auto-update doesn't work y
 
 # 2.1.823
 
-(2023 Nov 26) Hi all, the feature updating of imagino.AI will be paused for about two or three weeks because we have some other workloads. See you soon and we will come back in mid December. However, you may still see updates if other collaborators are fixing bugs or solving problems.
+(2023 Nov 26) Hi all, the feature updating of fooocus will be paused for about two or three weeks because we have some other workloads. See you soon and we will come back in mid December. However, you may still see updates if other collaborators are fixing bugs or solving problems.
 
 * Fix some potential problem when LoRAs has clip keys and user want to load those LoRAs to refiners.
 
@@ -217,7 +217,7 @@ This version includes various package updates. If the auto-update doesn't work y
 
 * New UI for LoRAs.
 * Improved preset system: normalized preset keys and file names.
-* Improved session system: now multiple users can use one imagino.AI at the same time without seeing others' results.
+* Improved session system: now multiple users can use one fooocus at the same time without seeing others' results.
 * Improved some computation related to model precision.
 * Improved config loading system with user-friendly prints.
 
@@ -310,12 +310,12 @@ This version includes various package updates. If the auto-update doesn't work y
 
 * Face swap (in line with Midjourney InsightFace): Input Image -> Image Prompt -> Advanced -> FaceSwap
 * The performance is super high. Use it carefully and never use it in any illegal things!
-* This implementation will crop faces for you and you do NOT need to crop faces before feeding images into imagino.AI. (If you previously manually crop faces from images for other software, you do not need to do that now in imagino.AI.)
+* This implementation will crop faces for you and you do NOT need to crop faces before feeding images into fooocus. (If you previously manually crop faces from images for other software, you do not need to do that now in fooocus.)
 
 # 2.1.788
 
 * Fixed some math problems in previous versions.
-* Inpaint engine v2.6 join the beta test of imagino.AI inpaint models. Use it in dev tools -> inpaint engine -> v2.6 .
+* Inpaint engine v2.6 join the beta test of fooocus inpaint models. Use it in dev tools -> inpaint engine -> v2.6 .
 
 # 2.1.785
 
@@ -333,19 +333,19 @@ Now when you load a lora, the following things will happen:
 1. try to load the lora to the base model, if failed (model mismatch), then try to load the lora to refiner.
 2. try to load the lora to refiner, if failed (model mismatch) then do nothing.
 
-In this way, imagino.AI 2.1.782 can benefit from all models and loras from CivitAI with both SDXL and SD1.5 ecosystem, using the unique imagino.AI swap algorithm, to achieve extremely high quality results (although the default setting is already very high quality), especially in some anime use cases, if users really want to play with all these things.
+In this way, fooocus 2.1.782 can benefit from all models and loras from CivitAI with both SDXL and SD1.5 ecosystem, using the unique fooocus swap algorithm, to achieve extremely high quality results (although the default setting is already very high quality), especially in some anime use cases, if users really want to play with all these things.
 
-Recently the community also developed LCM loras. Users can use it by setting the sampler as 'LCM', scheduler as 'sgm_uniform' (Update in 2.1.798: scheduler should also be "lcm"), the forced overwrite of sampling step as 4 to 8, and CFG guidance as 1.0, in dev tools. Do not forget to change the LCM lora weight to 1.0 (many people forget this and report failure cases). Also, set refiner to None. If LCM's feedback in the artists community is good (not the feedback in the programmer community of Stable Diffusion), imagino.AI may add some other shortcuts in the future.
+Recently the community also developed LCM loras. Users can use it by setting the sampler as 'LCM', scheduler as 'sgm_uniform' (Update in 2.1.798: scheduler should also be "lcm"), the forced overwrite of sampling step as 4 to 8, and CFG guidance as 1.0, in dev tools. Do not forget to change the LCM lora weight to 1.0 (many people forget this and report failure cases). Also, set refiner to None. If LCM's feedback in the artists community is good (not the feedback in the programmer community of Stable Diffusion), fooocus may add some other shortcuts in the future.
 
 # 2.1.781
 
-(2023 Oct 26) Hi all, the feature updating of imagino.AI will (really, really, this time) be paused for about two or three weeks because we really have some other workloads. Thanks for the passion of you all (and we in fact have kept updating even after last pausing announcement a week ago, because of many great feedbacks)  - see you soon and we will come back in mid November. However, you may still see updates if other collaborators are fixing bugs or solving problems.
+(2023 Oct 26) Hi all, the feature updating of fooocus will (really, really, this time) be paused for about two or three weeks because we really have some other workloads. Thanks for the passion of you all (and we in fact have kept updating even after last pausing announcement a week ago, because of many great feedbacks)  - see you soon and we will come back in mid November. However, you may still see updates if other collaborators are fixing bugs or solving problems.
 
 * Disable refiner to speed up when new users mistakenly set same model to base and refiner.
 
 # 2.1.779
 
-* Disable image grid by default because many users reports performance issues. For example, https://github.com/lllyasviel/imagino.AI/issues/829 and so on. The image grid will cause problem when user hard drive is not super fast, or when user internet connection is not very good (eg, run in remote). The option is moved to dev tools if users want to use it. We will take a look at it later.
+* Disable image grid by default because many users reports performance issues. For example, https://github.com/lllyasviel/fooocus/issues/829 and so on. The image grid will cause problem when user hard drive is not super fast, or when user internet connection is not very good (eg, run in remote). The option is moved to dev tools if users want to use it. We will take a look at it later.
 
 # 2.1.776
 
@@ -363,14 +363,14 @@ Recently the community also developed LCM loras. Users can use it by setting the
 
 Style Updates:
 
-* "Default (Slightly Cinematic)" as renamed to "imagino.AI Cinematic".
+* "Default (Slightly Cinematic)" as renamed to "fooocus Cinematic".
 * "Default (Slightly Cinematic)" is canceled from default style selections. 
-* Added "imagino.AI Sharp". This style combines many CivitAI prompts that reduces SDXL blurry and improves sharpness in a relatively natural way.
-* Added "imagino.AI Enhance". This style mainly use the very popular [default negative prompts from JuggernautXL](https://civitai.com/models/133005) and some other enhancing words. JuggernautXL's negative prompt has been proved to be very effective in many recent image posts on CivitAI to improve JuggernautXL and many other models.
-* "imagino.AI Sharp" and "imagino.AI Enhance" and "imagino.AI V2" becomes the new default set of styles.
+* Added "fooocus Sharp". This style combines many CivitAI prompts that reduces SDXL blurry and improves sharpness in a relatively natural way.
+* Added "fooocus Enhance". This style mainly use the very popular [default negative prompts from JuggernautXL](https://civitai.com/models/133005) and some other enhancing words. JuggernautXL's negative prompt has been proved to be very effective in many recent image posts on CivitAI to improve JuggernautXL and many other models.
+* "fooocus Sharp" and "fooocus Enhance" and "fooocus V2" becomes the new default set of styles.
 * Removed the default text in the "negative prompt" input area since it is not necessary now.
-* You can reproduce previous results by using "imagino.AI Cinematic".
-* "imagino.AI Sharp" and "imagino.AI Enhance" may undergo minor revision in future updates.
+* You can reproduce previous results by using "fooocus Cinematic".
+* "fooocus Sharp" and "fooocus Enhance" may undergo minor revision in future updates.
 
 # 2.1.739
 
@@ -408,7 +408,7 @@ Again, if you do not understand how Positional Encoding works, just do not chang
 
 # 2.1.723
 
-* Improve imagino.AI Anime a bit by using better SD1.5 refining formulation.
+* Improve fooocus Anime a bit by using better SD1.5 refining formulation.
 
 # 2.1.722
 
@@ -488,21 +488,21 @@ Again, if you do not understand how Positional Encoding works, just do not chang
 
 * Improved wildcards implementation (using same wildcard multiple times will now return different values).
 
-**(2023 Oct 18) Again, the feature updating of imagino.AI will be paused for about two or three weeks because we have some other workloads - we will come back in early or mid November. However, you may still see updates if other collaborators are fixing bugs or solving problems.**
+**(2023 Oct 18) Again, the feature updating of fooocus will be paused for about two or three weeks because we have some other workloads - we will come back in early or mid November. However, you may still see updates if other collaborators are fixing bugs or solving problems.**
 
 # 2.1.695 (requested emergency bug fix)
 
 * Reduced 3.4GB RAM use when swapping base model.
 * Reduced 372MB VRAM use in VAE decoding after using control model in image prompt.
-* Note that Official ComfyUI (d44a2de) will run out of VRAM when using sdxl and control-lora on 2060 6GB that does not support float16 at resolution 1024. imagino.AI 2.1.695 succeeded in outputting images without OOM using exactly same devices.
+* Note that Official ComfyUI (d44a2de) will run out of VRAM when using sdxl and control-lora on 2060 6GB that does not support float16 at resolution 1024. fooocus 2.1.695 succeeded in outputting images without OOM using exactly same devices.
 
 (2023 Oct 17) Announcement of update being paused.
 
 # 2.1.693
 
 * Putting custom styles before pre-defined styles.
-* Avoided the consusion between imagino.AI Anime preset and imagino.AI Anime style (imagino.AI Anime style is renamed to imagino.AI Masterpiece because it does not make images Anime-looking if not using with imagino.AI Anime preset).
-* Fixed some minor bugs in imagino.AI Anime preset's prompt emphasizing of commas.
+* Avoided the consusion between fooocus Anime preset and fooocus Anime style (fooocus Anime style is renamed to fooocus Masterpiece because it does not make images Anime-looking if not using with fooocus Anime preset).
+* Fixed some minor bugs in fooocus Anime preset's prompt emphasizing of commas.
 * Supported and documented embedding grammar (and wildcards grammar). 
 * This release is a relative stable version and many features are determined now.
 
@@ -559,7 +559,7 @@ AMD support on Linux and Windows.
 
 ### 2.0.72
 
-(2023 sep 21) The feature updating of imagino.AI will be paused for about two or three weeks because we have some events and travelling - we will come back in early or mid October. 
+(2023 sep 21) The feature updating of fooocus will be paused for about two or three weeks because we have some events and travelling - we will come back in early or mid October. 
 
 ### 2.0.72
 
@@ -576,8 +576,8 @@ AMD support on Linux and Windows.
 ### 2.0.16
 
 * Virtual memory system implemented. Now Colab can run both base model and refiner model with 7.8GB RAM + 5.3GB VRAM, and it never crashes.
-* If you are lucky enough to read this line, keep in mind that ComfyUI cannot do this. This is very reasonable that imagino.AI is more optimized because it only need to handle a fixed pipeline, but ComfyUI need to consider arbitrary pipelines. 
-* But if we just consider the optimization of this fixed workload, after 2.0.16, imagino.AI has become the most optimized SDXL app, outperforming ComfyUI.
+* If you are lucky enough to read this line, keep in mind that ComfyUI cannot do this. This is very reasonable that fooocus is more optimized because it only need to handle a fixed pipeline, but ComfyUI need to consider arbitrary pipelines. 
+* But if we just consider the optimization of this fixed workload, after 2.0.16, fooocus has become the most optimized SDXL app, outperforming ComfyUI.
 
 ### 2.0.0
 
@@ -633,7 +633,7 @@ AMD support on Linux and Windows.
 
 ### 1.0.41
 
-(The update of imagino.AI will be paused for a period of time for AUTOMATIC1111 sd-webui 1.6.X, and some features will also be implemented as webui extensions)
+(The update of fooocus will be paused for a period of time for AUTOMATIC1111 sd-webui 1.6.X, and some features will also be implemented as webui extensions)
 
 ### 1.0.40
 
@@ -658,7 +658,7 @@ AMD support on Linux and Windows.
 
 ### 1.0.32
 
-* imagino.AI private log
+* fooocus private log
 
 ### 1.0.31
 
@@ -716,7 +716,7 @@ AMD support on Linux and Windows.
 
 ### 1.0.16
 
-* Implemented "imagino.AI/outputs" folder for saving user results.
+* Implemented "fooocus/outputs" folder for saving user results.
 * Ignored cv2 errors when preview fails.
 * Mentioned future AMD support in Readme.
 * Created this log.

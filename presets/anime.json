@@ -37,9 +37,9 @@
     "default_prompt": "",
     "default_prompt_negative": "",
     "default_styles": [
-        "imagino.AI V2",
-        "imagino.AI Semi Realistic",
-        "imagino.AI Masterpiece"
+        "fooocus V2",
+        "fooocus Semi Realistic",
+        "fooocus Masterpiece"
     ],
     "default_aspect_ratio": "896*1152",
     "default_overwrite_step": -1,

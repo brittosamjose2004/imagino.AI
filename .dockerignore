@@ -20,7 +20,7 @@ user_path_config.txt
 user_path_config-deprecated.txt
 /modules/*.png
 /repositories
-/imagino.AI_env
+/fooocus_env
 /venv
 /tmp
 /ui-config.json

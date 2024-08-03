@@ -5,7 +5,7 @@ import json
 import time
 import shared
 import modules.config
-import imagino.AI_version
+import fooocus_version
 import modules.html
 import modules.async_worker as worker
 import modules.constants as constants
@@ -82,7 +82,7 @@ def generate_clicked(task: worker.AsyncTask):
                     gr.update(visible=True, value=product)
                 finished = True
 
-                # delete imagino.AI temp images, only keep gradio temp images
+                # delete fooocus temp images, only keep gradio temp images
                 if args_manager.args.disable_image_log:
                     for filepath in product:
                         if isinstance(filepath, str) and os.path.exists(filepath):
@@ -145,7 +145,7 @@ def inpaint_mode_change(mode, inpaint_engine_version):
 
 reload_javascript()
 
-title = f'imagino.AI {imagino.AI_version.version}'
+title = f'fooocus {fooocus_version.version}'
 
 if isinstance(args_manager.args.preset, str):
     title += ' ' + args_manager.args.preset
@@ -211,7 +211,7 @@ with shared.gradio_root:
                                 uov_input_image = grh.Image(label='Image', source='upload', type='numpy', show_label=False)
                             with gr.Column():
                                 uov_method = gr.Radio(label='Upscale or Variation:', choices=flags.uov_list, value=flags.disabled)
-                                gr.HTML('<a href="https://github.com/lllyasviel/imagino.AI/discussions/390" target="_blank">\U0001F4D4 Documentation</a>')
+                                gr.HTML('<a href="https://github.com/lllyasviel/fooocus/discussions/390" target="_blank">\U0001F4D4 Documentation</a>')
                     with gr.TabItem(label='Image Prompt') as ip_tab:
                         with gr.Row():
                             ip_images = []
@@ -244,7 +244,7 @@ with shared.gradio_root:
                                         ip_type.change(lambda x: flags.default_parameters[x], inputs=[ip_type], outputs=[ip_stop, ip_weight], queue=False, show_progress=False)
                                     ip_ad_cols.append(ad_col)
                         ip_advanced = gr.Checkbox(label='Advanced', value=False, container=False)
-                        gr.HTML('* \"Image Prompt\" is powered by imagino.AI Image Mixture Engine (v1.0.1). <a href="https://github.com/lllyasviel/imagino.AI/discussions/557" target="_blank">\U0001F4D4 Documentation</a>')
+                        gr.HTML('* \"Image Prompt\" is powered by fooocus Image Mixture Engine (v1.0.1). <a href="https://github.com/lllyasviel/fooocus/discussions/557" target="_blank">\U0001F4D4 Documentation</a>')
 
                         def ip_advance_checked(x):
                             return [gr.update(visible=x)] * len(ip_ad_cols) + \
@@ -268,7 +268,7 @@ with shared.gradio_root:
                                                                      label='Additional Prompt Quick List',
                                                                      components=[inpaint_additional_prompt],
                                                                      visible=False)
-                                gr.HTML('* Powered by imagino.AI Inpaint Engine <a href="https://github.com/lllyasviel/imagino.AI/discussions/414" target="_blank">\U0001F4D4 Documentation</a>')
+                                gr.HTML('* Powered by fooocus Inpaint Engine <a href="https://github.com/lllyasviel/fooocus/discussions/414" target="_blank">\U0001F4D4 Documentation</a>')
                                 example_inpaint_prompts.click(lambda x: x[0], inputs=example_inpaint_prompts, outputs=inpaint_additional_prompt, show_progress=False, queue=False)
 
                             with gr.Column(visible=False) as inpaint_mask_generation_col:
@@ -344,7 +344,7 @@ with shared.gradio_root:
                                     value=flags.desc_type_photo)
                                 desc_btn = gr.Button(value='Describe this Image into Prompt')
                                 desc_image_size = gr.Textbox(label='Image Size and Recommended Size', elem_id='desc_image_size', visible=False)
-                                gr.HTML('<a href="https://github.com/lllyasviel/imagino.AI/discussions/1363" target="_blank">\U0001F4D4 Documentation</a>')
+                                gr.HTML('<a href="https://github.com/lllyasviel/fooocus/discussions/1363" target="_blank">\U0001F4D4 Documentation</a>')
 
                                 def trigger_show_image_properties(image):
                                     value = modules.util.get_image_size_info(image, modules.flags.sdxl_aspect_ratios)
@@ -357,11 +357,11 @@ with shared.gradio_root:
                         with gr.Row():
                             with gr.Column():
                                 enhance_input_image = grh.Image(label='Use with Enhance, skips image generation', source='upload', type='numpy')
-                                gr.HTML('<a href="https://github.com/lllyasviel/imagino.AI/discussions/3281" target="_blank">\U0001F4D4 Documentation</a>')
+                                gr.HTML('<a href="https://github.com/lllyasviel/fooocus/discussions/3281" target="_blank">\U0001F4D4 Documentation</a>')
 
                     with gr.TabItem(label='Metadata') as metadata_tab:
                         with gr.Column():
-                            metadata_input_image = grh.Image(label='For images created by imagino.AI', source='upload', type='pil')
+                            metadata_input_image = grh.Image(label='For images created by fooocus', source='upload', type='pil')
                             metadata_json = gr.JSON(label='Metadata')
                             metadata_import_button = gr.Button(value='Apply Metadata')
 
@@ -401,7 +401,7 @@ with shared.gradio_root:
                                                                     inputs=enhance_uov_processing_order,
                                                                     outputs=enhance_uov_prompt_type,
                                                                     queue=False, show_progress=False)
-                                gr.HTML('<a href="https://github.com/lllyasviel/imagino.AI/discussions/3281" target="_blank">\U0001F4D4 Documentation</a>')
+                                gr.HTML('<a href="https://github.com/lllyasviel/fooocus/discussions/3281" target="_blank">\U0001F4D4 Documentation</a>')
                     enhance_ctrls = []
                     enhance_inpaint_mode_ctrls = []
                     enhance_inpaint_engine_ctrls = []
@@ -471,7 +471,7 @@ with shared.gradio_root:
                                 enhance_inpaint_engine = gr.Dropdown(label='Inpaint Engine',
                                                                      value=modules.config.default_inpaint_engine_version,
                                                                      choices=flags.inpaint_engine_versions,
-                                                                     info='Version of imagino.AI inpaint model. If set, use performance Quality or Speed (no performance LoRAs) for best results.')
+                                                                     info='Version of fooocus inpaint model. If set, use performance Quality or Speed (no performance LoRAs) for best results.')
                                 enhance_inpaint_strength = gr.Slider(label='Inpaint Denoising Strength',
                                                                      minimum=0.0, maximum=1.0, step=0.001,
                                                                      value=1.0,
@@ -493,7 +493,7 @@ with shared.gradio_root:
                                                                                  '(default is 0, always processed before any mask invert)')
                                 enhance_mask_invert = gr.Checkbox(label='Invert Mask', value=False)
 
-                            gr.HTML('<a href="https://github.com/lllyasviel/imagino.AI/discussions/3281" target="_blank">\U0001F4D4 Documentation</a>')
+                            gr.HTML('<a href="https://github.com/lllyasviel/fooocus/discussions/3281" target="_blank">\U0001F4D4 Documentation</a>')
 
                         enhance_ctrls += [
                             enhance_enabled,
@@ -692,7 +692,7 @@ with shared.gradio_root:
                 sharpness = gr.Slider(label='Image Sharpness', minimum=0.0, maximum=30.0, step=0.001,
                                       value=modules.config.default_sample_sharpness,
                                       info='Higher value means image and texture are sharper.')
-                gr.HTML('<a href="https://github.com/lllyasviel/imagino.AI/discussions/117" target="_blank">\U0001F4D4 Documentation</a>')
+                gr.HTML('<a href="https://github.com/lllyasviel/fooocus/discussions/117" target="_blank">\U0001F4D4 Documentation</a>')
                 dev_mode = gr.Checkbox(label='Developer Debug Mode', value=False, container=False)
 
                 with gr.Column(visible=False) as dev_tools:
@@ -710,7 +710,7 @@ with shared.gradio_root:
 
                         adaptive_cfg = gr.Slider(label='CFG Mimicking from TSNR', minimum=1.0, maximum=30.0, step=0.01,
                                                  value=modules.config.default_cfg_tsnr,
-                                                 info='Enabling imagino.AI\'s implementation of CFG mimicking for TSNR '
+                                                 info='Enabling fooocus\'s implementation of CFG mimicking for TSNR '
                                                       '(effective when real CFG > mimicked CFG).')
                         clip_skip = gr.Slider(label='CLIP Skip', minimum=1, maximum=flags.clip_skip_max, step=1,
                                                  value=modules.config.default_clip_skip,
@@ -815,7 +815,7 @@ with shared.gradio_root:
                         inpaint_engine = gr.Dropdown(label='Inpaint Engine',
                                                      value=modules.config.default_inpaint_engine_version,
                                                      choices=flags.inpaint_engine_versions,
-                                                     info='Version of imagino.AI inpaint model. If set, use performance Quality or Speed (no performance LoRAs) for best results.')
+                                                     info='Version of fooocus inpaint model. If set, use performance Quality or Speed (no performance LoRAs) for best results.')
                         inpaint_strength = gr.Slider(label='Inpaint Denoising Strength',
                                                      minimum=0.0, maximum=1.0, step=0.001, value=1.0,
                                                      info='Same as the denoising strength in A1111 inpaint. '
@@ -1064,11 +1064,11 @@ with shared.gradio_root:
         def trigger_describe(mode, img):
             if mode == flags.desc_type_photo:
                 from extras.interrogate import default_interrogator as default_interrogator_photo
-                return default_interrogator_photo(img), ["imagino.AI V2", "imagino.AI Enhance", "imagino.AI Sharp"]
+                return default_interrogator_photo(img), ["fooocus V2", "fooocus Enhance", "fooocus Sharp"]
             if mode == flags.desc_type_anime:
                 from extras.wd14tagger import default_interrogator as default_interrogator_anime
-                return default_interrogator_anime(img), ["imagino.AI V2", "imagino.AI Masterpiece"]
-            return mode, ["imagino.AI V2"]
+                return default_interrogator_anime(img), ["fooocus V2", "fooocus Masterpiece"]
+            return mode, ["fooocus V2"]
 
         desc_btn.click(trigger_describe, inputs=[desc_method, desc_input_image],
                        outputs=[prompt, style_selections], show_progress=True, queue=True)

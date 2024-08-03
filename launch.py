@@ -16,7 +16,7 @@ if "GRADIO_SERVER_PORT" not in os.environ:
 ssl._create_default_https_context = ssl._create_unverified_context
 
 import platform
-import imagino.AI_version
+import fooocus_version
 
 from build_launcher import build_launcher
 from modules.launch_util import is_installed, run, python, run_pip, requirements_met, delete_folder_content
@@ -33,7 +33,7 @@ def prepare_environment():
     requirements_file = os.environ.get('REQS_FILE', "requirements_versions.txt")
 
     print(f"Python {sys.version}")
-    print(f"imagino.AI version: {imagino.AI_version.version}")
+    print(f"fooocus version: {fooocus_version.version}")
 
     if REINSTALL_ALL or not is_installed("torch") or not is_installed("torchvision"):
         run(f'"{python}" -m {torch_command}', "Installing torch and torchvision", "Couldn't install torch", live=True)
@@ -104,8 +104,8 @@ def download_models(default_model, previous_default_models, checkpoint_downloads
         load_file_from_url(url=url, model_dir=config.path_vae_approx, file_name=file_name)
 
     load_file_from_url(
-        url='https://huggingface.co/lllyasviel/misc/resolve/main/imagino.AI_expansion.bin',
-        model_dir=config.path_imagino.AI_expansion,
+        url='https://huggingface.co/lllyasviel/misc/resolve/main/fooocus_expansion.bin',
+        model_dir=config.path_fooocus_expansion,
         file_name='pytorch_model.bin'
     )
 
@@ -118,7 +118,7 @@ def download_models(default_model, previous_default_models, checkpoint_downloads
             for alternative_model_name in previous_default_models:
                 if os.path.exists(os.path.join(config.paths_checkpoints[0], alternative_model_name)):
                     print(f'You do not have [{default_model}] but you have [{alternative_model_name}].')
-                    print(f'imagino.AI will use [{alternative_model_name}] to avoid downloading new models, '
+                    print(f'fooocus will use [{alternative_model_name}] to avoid downloading new models, '
                           f'but you are not using the latest models.')
                     print('Use --always-download-new-model to avoid fallback and always get new models.')
                     checkpoint_downloads = {}

@@ -37,9 +37,9 @@
     "default_prompt": "",
     "default_prompt_negative": "",
     "default_styles": [
-        "imagino.AI V2",
-        "imagino.AI Enhance",
-        "imagino.AI Sharp"
+        "fooocus V2",
+        "fooocus Enhance",
+        "fooocus Sharp"
     ],
     "default_aspect_ratio": "1152*896",
     "default_overwrite_step": -1,

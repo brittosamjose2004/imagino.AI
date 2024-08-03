@@ -1,5 +1,5 @@
 name: Bug Report
-description: You think something is broken in imagino.AI
+description: You think something is broken in fooocus
 title: "[Bug]: "
 labels: ["bug", "triage"]
 
@@ -16,14 +16,14 @@ body:
       description: |
         Please perform basic debugging to see if your configuration is the cause of the issue.
         Basic debug procedure
-        　2. Update imagino.AI - sometimes things just need to be updated
+        　2. Update fooocus - sometimes things just need to be updated
         　3. Backup and remove your config.txt - check if the issue is caused by bad configuration
-        　5. Try a fresh installation of imagino.AI in a different directory - see if a clean installation solves the issue
+        　5. Try a fresh installation of fooocus in a different directory - see if a clean installation solves the issue
         Before making a issue report please, check that the issue hasn't been reported recently.
       options:
-        - label: The issue has not been resolved by following the [troubleshooting guide](https://github.com/lllyasviel/imagino.AI/blob/main/troubleshoot.md)
-        - label: The issue exists on a clean installation of imagino.AI
-        - label: The issue exists in the current version of imagino.AI
+        - label: The issue has not been resolved by following the [troubleshooting guide](https://github.com/lllyasviel/fooocus/blob/main/troubleshoot.md)
+        - label: The issue exists on a clean installation of fooocus
+        - label: The issue exists in the current version of fooocus
         - label: The issue has not been reported before recently
         - label: The issue has been reported before but has not been fixed yet
   - type: markdown
@@ -56,13 +56,13 @@ body:
       label: What should have happened?
       description: Tell us what you think the normal behavior should be
       placeholder: |
-        imagino.AI should ...
+        fooocus should ...
     validations:
       required: true
   - type: dropdown
     id: browsers
     attributes:
-      label: What browsers do you use to access imagino.AI?
+      label: What browsers do you use to access fooocus?
       multiple: true
       options:
         - Mozilla Firefox
@@ -76,7 +76,7 @@ body:
   - type: dropdown
     id: hosting
     attributes:
-      label: Where are you running imagino.AI?
+      label: Where are you running fooocus?
       multiple: false
       options:
         - Locally
